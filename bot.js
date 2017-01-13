@@ -9,5 +9,4 @@ var bot = new Bot(settings);
 
 bot.on('start', function() {
     bot.postMessageToChannel('general', 'Hello channel!');
-    bot.postMessageToUser('solairerove', 'hello bro!');
 });
