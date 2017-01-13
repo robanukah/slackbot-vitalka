@@ -1,0 +1,14 @@
+{
+    "name": "slack-bot-demo",
+    "version": "0.0.1",
+    "description": "Demo bot for slack",
+    "main": "app.js",
+    "author": "Nikita Krivitski",
+    "license": "MIT",
+
+    "dependencies": {
+        "express": "4.14.0",
+        "body-parser": "1.15.2",
+        "request": "2.79.0"
+    }
+}
