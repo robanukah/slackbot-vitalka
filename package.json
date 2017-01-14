@@ -1,9 +1,19 @@
 {
     "name": "slackbot-vitalka",
     "version": "0.0.1",
-    "description": "Meme bot for slack",
+    "description": "Meme and time bot for slack",
     "main": "app.js",
-    "author": "Nikita Krivitski",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/solairerove/slackbot-vitalka"
+    },
+    "authors": {
+        "solairerove": "Nikita Krivitski",
+        "vlsidlyarevich": "Vladislav Sidlyarevich",
+        "KarpukDm": "Karpuk Dmitry",
+        "Vanish404": "Shuba Maxim",
+        "Dima Sulavko": "kamaz1k"
+    },
     "license": "MIT",
 
     "dependencies": {
