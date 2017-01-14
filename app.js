@@ -1,30 +1,32 @@
-var express = require('express');
-var bodyParser = require('body-parser');
+var RtmClient = require('@slack/client').RtmClient;
+var RTM_EVENTS = require('@slack/client').RTM_EVENTS;
+var CLIENT_EVENTS = require('@slack/client').CLIENT_EVENTS;
+var WebClient = require('@slack/client').WebClient;
 
-var app = express();
-var port = process.env.PORT || 1337;
+var bot_token = 'xoxb-127337814596-J6LGegaejRqVxCg6TOqD2huI';
 
-app.use(bodyParser.urlencoded({
-    extended: true
-}));
+var rtm = new RtmClient(bot_token);
+var web = new WebClient(bot_token);
 
-app.get('/', function(req, res) {
-    res.status(200).send('Hello World!');
+rtm.on(CLIENT_EVENTS.RTM.AUTHENTICATED, function(rtmStartData) {
+    console.log(`Logged in as ${rtmStartData.self.name} of ` +
+        `team ${rtmStartData.team.name}, but not yet connected to a channel`)
 });
 
-app.listen(port, function() {
-    console.log('Listening on port ' + port);
+rtm.start();
+
+rtm.on(RTM_EVENTS.MESSAGE, function handleRtmMessage(message) {
+    console.log('Message: ', message);
+    rtm.sendMessage('Hello', 'D3QH47GFK');
+    console.log('activeUserId: ' + rtm.activeUserId);
 });
 
-app.post('/hello', function(req, res, next) {
-    var userName = req.body.user_name;
-    var botPayLoad = {
-        text: 'Hello ' + userName + ', welcome bitch !!!'
-    };
-
-    if (userName !== 'slackbot') {
-        return res.status(200).json(botPayLoad);
+web.channels.list(function(err, info) {
+    if (err) {
+        console.log('Error:', err);
     } else {
-        return res.status(200).end();
+        for (var i in info.channels) {
+            console.log(info.channels[i].name + '->' + info.channels[i].id);
+        }
     }
 });
