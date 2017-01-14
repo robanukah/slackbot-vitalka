@@ -1,30 +1,23 @@
-var express = require('express');
-var bodyParser = require('body-parser');
+var Botkit = require('botkit');
 
-var app = express();
-var port = process.env.PORT || 1337;
-
-app.use(bodyParser.urlencoded({
-    extended: true
-}));
-
-app.get('/', function(req, res) {
-    res.status(200).send('Hello World!');
+var controller = Botkit.slackbot({
+    debug: false
 });
 
-app.listen(port, function() {
-    console.log('Listening on port ' + port);
-});
-
-app.post('/hello', function(req, res, next) {
-    var userName = req.body.user_name;
-    var botPayLoad = {
-        text: 'Hello ' + userName + ', welcome bitch !!!'
-    };
-
-    if (userName !== 'slackbot') {
-        return res.status(200).json(botPayLoad);
-    } else {
-        return res.status(200).end();
+controller.spawn({
+    token: 'xoxb-127337814596-J6LGegaejRqVxCg6TOqD2huI'
+}).startRTM(function(err) {
+    if (err) {
+        throw new Error(err);
     }
+});
+
+controller.hears(['hello', 'hi'], ['direct_message', 'direct_mention', 'mention'],
+    function(bot, message) {
+        bot.reply(message, 'Hello yourself.');
+    }
+);
+
+controller.on('direct_mention', function(bot, message) {
+    bot.reply(message, 'I heard you mention me!');
 });
