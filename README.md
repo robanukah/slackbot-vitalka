@@ -1,5 +1,13 @@
 # slackbot-vitalka
 
+## Botkit doc
+
+[here](https://github.com/howdyai/botkit)
+
+## Slack API
+
+[here](https://api.slack.com/)
+
 ## Env
 
 ```
