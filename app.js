@@ -3,6 +3,8 @@
 var Botkit = require('botkit');
 var VKApi = require('node-vkapi');
 
+var LEPRO_ID = -65960786;
+
 var controller = Botkit.slackbot({
     debug: false
 });
@@ -32,33 +34,13 @@ controller.hears(['hello', 'hi'], ['direct_message', 'direct_mention', 'mention'
     }
 );
 
-controller.on('direct_mention', function(bot, message) {
-    bot.reply(message, 'I heard you mention me!');
-});
-
-controller.hears(['durov'], ['direct_message'], function(bot, message) {
-    vk.call('users.get', {
-        user_ids: ['1', '2']
-    }).then(res => {
-        bot.say({
-            text: 'id: ' + res[0].id + '\n' +
-                'first_name: ' + res[0].first_name + '\n' +
-                'last_name: ' + res[0].last_name + '\n',
-            channel: '#random'
-        });
-        console.log(res);
-    })
-});
-
-controller.hears(['pic'], ['direct_message'], function(bot, message) {
-    vk.auth.user({
-        scope: ['wall']
-    }).then(token => {
-        return vk.call('groups.getById', {
-            group_id: 65960786,
+controller.hears(['lepro'], ['direct_mention'], function(bot, message) {
+    vk.auth.user().then(token => {
+        return vk.call('wall.get', {
+            owner_id: LEPRO_ID,
             version: 5.62
         }).then(res => {
-            bot.reply(message, res[0].name);
+            bot.reply(message, res.items[0].attachments[0].photo.photo_604);
             console.log(res);
         }).catch(error => {
             console.log(error);
