@@ -1,12 +1,20 @@
 # slackbot-vitalka
 
-## Botkit doc
+## Botkit
 
-[here](https://github.com/howdyai/botkit)
+[botkit](https://www.npmjs.com/package/botkit)
 
 ## Slack API
 
-[here](https://api.slack.com/)
+[slacl api](https://api.slack.com/)
+
+## Node.js SDK
+
+[node-vkapi](https://www.npmjs.com/package/node-vkapi)
+
+## VK api
+
+[vk api](https://vk.com/dev/objects)
 
 ## Env
 
