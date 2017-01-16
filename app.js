@@ -55,8 +55,10 @@ controller.hears(['pic'], ['direct_message'], function(bot, message) {
         scope: ['wall']
     }).then(token => {
         return vk.call('groups.get', {
-            user_id: token.user_id
+            user_id: token.user_id,
+            extended: 1
         }).then(res => {
+            bot.reply(message, res.items[0].name);
             console.log(res);
         }).catch(error => {
             console.log(error);
