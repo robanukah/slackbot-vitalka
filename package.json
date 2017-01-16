@@ -17,6 +17,7 @@
     "license": "MIT",
 
     "dependencies": {
-        "botkit": "0.4.9"
+        "botkit": "0.4.9",
+        "node-vkapi": "2.1.0"
     }
 }
