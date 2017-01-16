@@ -54,11 +54,11 @@ controller.hears(['pic'], ['direct_message'], function(bot, message) {
     vk.auth.user({
         scope: ['wall']
     }).then(token => {
-        return vk.call('groups.get', {
-            user_id: token.user_id,
-            extended: 1
+        return vk.call('groups.getById', {
+            group_id: 65960786,
+            version: 5.62
         }).then(res => {
-            bot.reply(message, res.items[0].name);
+            bot.reply(message, res[0].name);
             console.log(res);
         }).catch(error => {
             console.log(error);
