@@ -6,7 +6,7 @@
 
 ## Slack API
 
-[slacl api](https://api.slack.com/)
+[slack api](https://api.slack.com/)
 
 ## Node.js SDK
 
