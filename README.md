@@ -1,14 +1,18 @@
 # slackbot-vitalka
 
-## Botkit
+## Building blocks for Building Bots
 
 [botkit](https://www.npmjs.com/package/botkit)
+
+## Fast, unopinionated, minimalist web framework
+
+[express](https://www.npmjs.com/package/express)
 
 ## Slack API
 
 [slack api](https://api.slack.com/)
 
-## Node.js SDK
+## Node.js SDK for VK API
 
 [node-vkapi](https://www.npmjs.com/package/node-vkapi)
 
