@@ -1,5 +1,3 @@
-'user strict';
-
 var Botkit = require('botkit');
 var VKApi = require('node-vkapi');
 
@@ -24,7 +22,7 @@ controller.spawn({
     }
 });
 
-controller.hears([LEPRO_WALL], ['direct_message'], function(bot, message) {
+controller.hears([LEPRO_WALL], ['direct_mention'], function(bot, message) {
     vk.call('wall.get', {
         owner_id: LEPRO_ID,
         fields: ['marked_as_ads'],
